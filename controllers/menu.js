@@ -44,7 +44,7 @@ const inlineKeyboard = [[{
 }]]
 
 bot.onText(/^[\/!#]start$/, msg => {
-    bot.sendMessage(msg.from.id, `*Select language:*`, {
+    bot.sendMessage(msg.from.id, `اختار اللغة:*`, {
         parse_mode: 'Markdown',
         reply_markup: {
             inline_keyboard: helpKeyboard
@@ -53,7 +53,7 @@ bot.onText(/^[\/!#]start$/, msg => {
 });
 
 bot.onText(/^[\/!#]help$/, msg => {
-    bot.sendMessage(msg.from.id, `*Select language:*`, {
+    bot.sendMessage(msg.from.id, `*اختار اللغة:*`, {
         parse_mode: 'Markdown',
         reply_markup: {
             inline_keyboard: helpKeyboard
