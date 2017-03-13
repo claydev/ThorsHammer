@@ -10,8 +10,8 @@ const bot = new Tg(config.BOT_TOKEN, {
 });
 
 bot.getMe().then(me => {
-    console.log(rangi.cyan(`Bot Is Running => ${me.username}`));
-    bot.sendMessage(config.SUDO, `Bot Started!\n${moment().format('MMMM Do YYYY, h:mm:ss a')}`, {parse_mode: 'Markdown'});
+    console.log(rangi.cyan(`البوت يعمل الان => ${me.username}`));
+    bot.sendMessage(config.SUDO, `البوت يعمل\n${moment().format('MMMM Do YYYY, h:mm:ss a')}`, {parse_mode: 'Markdown'});
 });
 
 module.exports = bot;
