@@ -10,7 +10,7 @@ bot.onText(/^[\/!#]leave$/, msg => {
     if (msg.from.id == config.SUDO) {
         bot.leaveChat(msg.chat.id);
     } else {
-        bot.sendMessage(msg.chat.id, `*${msg.from.first_name}*, You Are Not The Super User!`, {parse_mode: 'Markdown'});
+        bot.sendMessage(msg.chat.id, `*${msg.from.first_name}*, انت لست ادمن!`, {parse_mode: 'Markdown'});
     }
 });
 
@@ -22,14 +22,14 @@ bot.onText(/^[\/!#]promote$/, msg => {
         });
         newMod.save(err => {
             if (err && err.code === 11000) {
-                bot.sendMessage(msg.chat.id, `*${msg.reply_to_message.from.first_name}*, Is Already A Global Admin`, {parse_mode: 'Markdown'});
+                bot.sendMessage(msg.chat.id, `*${msg.reply_to_message.from.first_name}*, انه مشرف عام بالفعل`, {parse_mode: 'Markdown'});
             } else {
-                bot.sendMessage(msg.chat.id, `*${msg.reply_to_message.from.first_name}*, Promoted To A Global Admin!`, {parse_mode: 'Markdown'});
-                bot.sendMessage(config.LOG_CHANNEL, `*${msg.reply_to_message.from.first_name}*, Is Now A Global Admin!\n${moment().format('MMMM Do YYYY, h:mm:ss a')}`, {parse_mode: 'Markdown'});
+                bot.sendMessage(msg.chat.id, `*${msg.reply_to_message.from.first_name}*, تم ترقيته لمشرف عام!`, {parse_mode: 'Markdown'});
+                bot.sendMessage(config.LOG_CHANNEL, `*${msg.reply_to_message.from.first_name}*, تم ترقيته لمشرف عام!\n${moment().format('MMMM Do YYYY, h:mm:ss a')}`, {parse_mode: 'Markdown'});
             }
         });
     } else {
-        bot.sendMessage(msg.chat.id, `*${msg.from.first_name}*, You Are Not A Global Admin!`, {parse_mode: 'Markdown'});
+        bot.sendMessage(msg.chat.id, `*${msg.from.first_name}*, انت لست مشرف عام في البوت!`, {parse_mode: 'Markdown'});
     }
 });
 
@@ -40,10 +40,10 @@ bot.onText(/^[\/!#]demote$/, msg => {
         }, () => {
             // Demote A Global Admin
         });
-        bot.sendMessage(msg.chat.id, `*${msg.reply_to_message.from.first_name}*, Demoted!`, {parse_mode: 'Markdown'});
-        bot.sendMessage(config.LOG_CHANNEL, `*${msg.reply_to_message.from.first_name}*, Is No Longer A Global Admin!\n${moment().format('MMMM Do YYYY, h:mm:ss a')}`, {parse_mode: 'Markdown'});
+        bot.sendMessage(msg.chat.id, `*${msg.reply_to_message.from.first_name}*, تم حذفه من المشرفين!`, {parse_mode: 'Markdown'});
+        bot.sendMessage(config.LOG_CHANNEL, `*${msg.reply_to_message.from.first_name}*, تم حذفه من المشرفين!\n${moment().format('MMMM Do YYYY, h:mm:ss a')}`, {parse_mode: 'Markdown'});
     } else {
-        bot.sendMessage(msg.chat.id, `*${msg.from.first_name}*, You Are Not A Global Admin!`, {parse_mode: 'Markdown'});
+        bot.sendMessage(msg.chat.id, `*${msg.from.first_name}*, انت لست مشرف عام في البوت!`, {parse_mode: 'Markdown'});
     }
 });
 
@@ -55,14 +55,14 @@ bot.onText(/[\/!#]promote (\d+) (.+)/, (msg, match) => {
         });
         newMod.save(err => {
             if (err && err.code === 11000) {
-                bot.sendMessage(msg.chat.id, `*${match[2]}*, Is Already A Global Admin`, {parse_mode: 'Markdown'});
+                bot.sendMessage(msg.chat.id, `*${match[2]}*,  انه مشرف عام بالفعل`, {parse_mode: 'Markdown'});
             } else {
-                bot.sendMessage(msg.chat.id, `*${match[2]}*, Promoted To A Global Admin!`, {parse_mode: 'Markdown'});
-                bot.sendMessage(config.LOG_CHANNEL, `*${match[2]}* _(${match[1]})_, Is Now A Global Admin!\n${moment().format('MMMM Do YYYY, h:mm:ss a')}`, {parse_mode: 'Markdown'});
+                bot.sendMessage(msg.chat.id, `*${match[2]}*, تم ترقيته لمشرف عام!`, {parse_mode: 'Markdown'});
+                bot.sendMessage(config.LOG_CHANNEL, `*${match[2]}* _(${match[1]})_, تم ترقيته لمشرف عام!\n${moment().format('MMMM Do YYYY, h:mm:ss a')}`, {parse_mode: 'Markdown'});
             }
         });
     } else {
-        bot.sendMessage(msg.chat.id, `*${msg.from.first_name}*, You Are Not A Global Admin!`, {parse_mode: 'Markdown'});
+        bot.sendMessage(msg.chat.id, `*${msg.from.first_name}*,  انت لست مشرف عام في البوت!`, {parse_mode: 'Markdown'});
     }
 });
 
@@ -73,10 +73,10 @@ bot.onText(/[\/!#]demote (\d+) (.+)/, (msg, match) => {
         }, () => {
             // Demote A Global Admin
         });
-        bot.sendMessage(msg.chat.id, `*${match[2]}*, Demoted!`, {parse_mode: 'Markdown'});
-        bot.sendMessage(config.LOG_CHANNEL, `*${match[2]}* _(${match[1]})_, Is No Longer A Global Admin!\n${moment().format('MMMM Do YYYY, h:mm:ss a')}`, {parse_mode: 'Markdown'});
+        bot.sendMessage(msg.chat.id, `*${match[2]}*, تم حذفه من المشرفين!`, {parse_mode: 'Markdown'});
+        bot.sendMessage(config.LOG_CHANNEL, `*${match[2]}* _(${match[1]})_, تم حذفه من المشرفين!\n${moment().format('MMMM Do YYYY, h:mm:ss a')}`, {parse_mode: 'Markdown'});
     } else {
-        bot.sendMessage(msg.chat.id, `*${msg.from.first_name}*, You Are Not A Global Admin!`, {parse_mode: 'Markdown'});
+        bot.sendMessage(msg.chat.id, `*${msg.from.first_name}*, انت لست مشرف عام في البوت!`, {parse_mode: 'Markdown'});
     }
 });
 
@@ -89,15 +89,15 @@ bot.onText(/[\/!#]promote (@\w+) (.+)/, (msg, match) => {
         });
         newMod.save(err => {
             if (err && err.code === 11000) {
-                bot.sendMessage(msg.chat.id, `*${result.first_name}*, Is Already A Global Admin`, {parse_mode: 'Markdown'});
+                bot.sendMessage(msg.chat.id, `*${result.first_name}*,  انه مشرف عام بالفعل`, {parse_mode: 'Markdown'});
             } else {
-                bot.sendMessage(msg.chat.id, `*${result.first_name}*, Promoted To A Global Admin!`, {parse_mode: 'Markdown'});
-                bot.sendMessage(config.LOG_CHANNEL, `*${result.first_name}* _(${result.id})_, Is Now A Global Admin!\n${moment().format('MMMM Do YYYY, h:mm:ss a')}`, {parse_mode: 'Markdown'});
+                bot.sendMessage(msg.chat.id, `*${result.first_name}*, تم ترقيته لمشرف عام!`, {parse_mode: 'Markdown'});
+                bot.sendMessage(config.LOG_CHANNEL, `*${result.first_name}* _(${result.id})_, تم ترقيته لمشرف عام!\n${moment().format('MMMM Do YYYY, h:mm:ss a')}`, {parse_mode: 'Markdown'});
             }
         });
     });        
     } else {
-        bot.sendMessage(msg.chat.id, `*${msg.from.first_name}*, You Are Not A Global Admin!`, {parse_mode: 'Markdown'});
+        bot.sendMessage(msg.chat.id, `*${msg.from.first_name}*, انت لست مشرف عام في البوت!`, {parse_mode: 'Markdown'});
     }
 });
 
@@ -109,10 +109,10 @@ bot.onText(/[\/!#]demote (@\w+) (.+)/, (msg, match) => {
         }, () => {
             // Demote A Global Admin
         });
-        bot.sendMessage(msg.chat.id, `*${result.first_name}*, Demoted!`, {parse_mode: 'Markdown'});
-        bot.sendMessage(config.LOG_CHANNEL, `*${result.first_name}* _(${result.id})_, Is No Longer A Global Admin!\n${moment().format('MMMM Do YYYY, h:mm:ss a')}`, {parse_mode: 'Markdown'});
+        bot.sendMessage(msg.chat.id, `*${result.first_name}*,  تم حذفه من المشرفين!`, {parse_mode: 'Markdown'});
+        bot.sendMessage(config.LOG_CHANNEL, `*${result.first_name}* _(${result.id})_,  تم حذفه من المشرفين!\n${moment().format('MMMM Do YYYY, h:mm:ss a')}`, {parse_mode: 'Markdown'});
     });        
     } else {
-        bot.sendMessage(msg.chat.id, `*${msg.from.first_name}*, You Are Not A Global Admin!`, {parse_mode: 'Markdown'});
+        bot.sendMessage(msg.chat.id, `*${msg.from.first_name}*, انت لست مشرف عام في البوت!`, {parse_mode: 'Markdown'});
     }
 });
