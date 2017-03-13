@@ -19,14 +19,14 @@ bot.onText(/^[\/!#]hammer$/, msg => {
             });
             newBan.save(err => {
                 if (err && err.code === 11000) {
-                    bot.sendMessage(msg.chat.id, `*${msg.reply_to_message.from.first_name}*, Is Already Globally Banned!`, {parse_mode: 'Markdown'});
+                    bot.sendMessage(msg.chat.id, `*${msg.reply_to_message.from.first_name}*, تم حظره عام مسبقا!`, {parse_mode: 'Markdown'});
                 } else {
-                    bot.sendMessage(msg.chat.id, `*${msg.reply_to_message.from.first_name}*, Globally Banned!`, {parse_mode: 'Markdown'});
-                    bot.sendMessage(config.LOG_CHANNEL, `*${msg.reply_to_message.from.first_name}*, Globally Banned!\nBy: _${msg.from.first_name}_\n${moment().format('MMMM Do YYYY, h:mm:ss a')}`, {parse_mode: 'Markdown'});
+                    bot.sendMessage(msg.chat.id, `*${msg.reply_to_message.from.first_name}*, محظور عام!`, {parse_mode: 'Markdown'});
+                    bot.sendMessage(config.LOG_CHANNEL, `*${msg.reply_to_message.from.first_name}*, تم حظره عام!\nمن قبل: _${msg.from.first_name}_\n${moment().format('MMMM Do YYYY, h:mm:ss a')}`, {parse_mode: 'Markdown'});
                 }
             });
         } else {
-            bot.sendMessage(msg.chat.id, `*${msg.from.first_name}*, You Are Not A Global Admin!`, {parse_mode: 'Markdown'});
+            bot.sendMessage(msg.chat.id, `*${msg.from.first_name}*, انت لست مشرف في البوت!`, {parse_mode: 'Markdown'});
         }
     });
 });
@@ -42,10 +42,10 @@ bot.onText(/^[\/!#]unhammer$/, msg => {
             }, () => {
                 // Globally Unhammered
             });
-            bot.sendMessage(msg.chat.id, `*${msg.reply_to_message.from.first_name}*, Globally Unbanned!`, {parse_mode: 'Markdown'});
-            bot.sendMessage(config.LOG_CHANNEL, `*${msg.reply_to_message.from.first_name}*, Globally Unbanned!\nBy: _${msg.from.first_name}_\n${moment().format('MMMM Do YYYY, h:mm:ss a')}`, {parse_mode: 'Markdown'});
+            bot.sendMessage(msg.chat.id, `*${msg.reply_to_message.from.first_name}*, تم فك الحظر العام!`, {parse_mode: 'Markdown'});
+            bot.sendMessage(config.LOG_CHANNEL, `*${msg.reply_to_message.from.first_name}*, تم فك الحظر العام!\nمن قبل: _${msg.from.first_name}_\n${moment().format('MMMM Do YYYY, h:mm:ss a')}`, {parse_mode: 'Markdown'});
         } else {
-            bot.sendMessage(msg.chat.id, `*${msg.from.first_name}*, You Are Not A Global Admin!`, {parse_mode: 'Markdown'});
+            bot.sendMessage(msg.chat.id, `*${msg.from.first_name}*, انت لست مشرف في البوت!`, {parse_mode: 'Markdown'});
         }
     });
 });
@@ -60,14 +60,14 @@ bot.onText(/[\/!#]hammer (\d+)/, (msg, match) => {
             });
             newBan.save(err => {
                 if (err && err.code === 11000) {
-                    bot.sendMessage(msg.chat.id, `*${match[1]}*, Is Already Globally Banned!`, {parse_mode: 'Markdown'});
+                    bot.sendMessage(msg.chat.id, `*${match[1]}*, تم حظره عام مسبقا!`, {parse_mode: 'Markdown'});
                 } else {
-                    bot.sendMessage(msg.chat.id, `*${match[1]}*, Globally Banned!`, {parse_mode: 'Markdown'});
-                    bot.sendMessage(config.LOG_CHANNEL, `_(${match[1]})_, Globally Banned!\nBy: _${msg.from.first_name}_\n${moment().format('MMMM Do YYYY, h:mm:ss a')}`, {parse_mode: 'Markdown'});
+                    bot.sendMessage(msg.chat.id, `*${match[1]}*, محظور عام!`, {parse_mode: 'Markdown'});
+                    bot.sendMessage(config.LOG_CHANNEL, `_(${match[1]})_, تم حظره عام!\nمن قبل: _${msg.from.first_name}_\n${moment().format('MMMM Do YYYY, h:mm:ss a')}`, {parse_mode: 'Markdown'});
                 }
             });
         } else {
-            bot.sendMessage(msg.chat.id, `*${msg.from.first_name}*, You Are Not A Global Admin!`, {parse_mode: 'Markdown'});
+            bot.sendMessage(msg.chat.id, `*${msg.from.first_name}*, انت لست مشرف في البوت!`, {parse_mode: 'Markdown'});
         }
     });
 });
@@ -84,10 +84,10 @@ bot.onText(/[\/!#]unhammer (\d+)/, (msg, match) => {
                     console.log('User Not Found!')
                 }
             });
-            bot.sendMessage(msg.chat.id, `*${match[1]}*, Globally Unbanned!`, {parse_mode: 'Markdown'});
-            bot.sendMessage(config.LOG_CHANNEL, `_(${match[1]})_, Globally Unbanned!\nBy: _${msg.from.first_name}_\n${moment().format('MMMM Do YYYY, h:mm:ss a')}`, {parse_mode: 'Markdown'});
+            bot.sendMessage(msg.chat.id, `*${match[1]}*, تم فك الحظر العام!`, {parse_mode: 'Markdown'});
+            bot.sendMessage(config.LOG_CHANNEL, `_(${match[1]})_, تم فك الحظر العام!\nمن قبل: _${msg.from.first_name}_\n${moment().format('MMMM Do YYYY, h:mm:ss a')}`, {parse_mode: 'Markdown'});
         } else {
-            bot.sendMessage(msg.chat.id, `*${msg.from.first_name}*, You Are Not A Global Admin!`, {parse_mode: 'Markdown'});
+            bot.sendMessage(msg.chat.id, `*${msg.from.first_name}*, انت لست مشرف في البوت!`, {parse_mode: 'Markdown'});
         }
     });
 });
@@ -104,15 +104,15 @@ bot.onText(/[\/!#]hammer (@\w+)/, (msg, match) => {
                 console.log(result)
             newBan.save(err => {
                 if (err && err.code === 11000) {
-                    bot.sendMessage(msg.chat.id, `*${result.first_name}*, Is Already Globally Banned!`, {parse_mode: 'Markdown'});
+                    bot.sendMessage(msg.chat.id, `*${result.first_name}*, تم حظره عام مسبقا!`, {parse_mode: 'Markdown'});
                 } else {
-                    bot.sendMessage(msg.chat.id, `*${result.first_name}*, Globally Banned!`, {parse_mode: 'Markdown'});
-                    bot.sendMessage(config.LOG_CHANNEL, `*${result.first_name}* _(${result.id})_, Globally Banned!\nBy: _${msg.from.first_name}_\n${moment().format('MMMM Do YYYY, h:mm:ss a')}`, {parse_mode: 'Markdown'});
+                    bot.sendMessage(msg.chat.id, `*${result.first_name}*, محظور عام!`, {parse_mode: 'Markdown'});
+                    bot.sendMessage(config.LOG_CHANNEL, `*${result.first_name}* _(${result.id})_, تم حظره عام!\nمن قبل: _${msg.from.first_name}_\n${moment().format('MMMM Do YYYY, h:mm:ss a')}`, {parse_mode: 'Markdown'});
                 }
             });
         });
         } else {
-            bot.sendMessage(msg.chat.id, `*${msg.from.first_name}*, You Are Not A Global Admin!`, {parse_mode: 'Markdown'});
+            bot.sendMessage(msg.chat.id, `*${msg.from.first_name}*, انت لست مشرف في البوت!`, {parse_mode: 'Markdown'});
         }
     });
 });
@@ -130,11 +130,11 @@ bot.onText(/[\/!#]unhammer (@\w+)/, (msg, match) => {
                     console.log('User Not Found!')
                 }
             });
-            bot.sendMessage(msg.chat.id, `*${result.first_name}*, Globally Unbanned!`, {parse_mode: 'Markdown'});
-            bot.sendMessage(config.LOG_CHANNEL, `*${result.first_name}* _(${result.id})_, Globally Unbanned!\nBy: _${msg.from.first_name}_\n${moment().format('MMMM Do YYYY, h:mm:ss a')}`, {parse_mode: 'Markdown'});
+            bot.sendMessage(msg.chat.id, `*${result.first_name}*, تم فك الحظر العام!`, {parse_mode: 'Markdown'});
+            bot.sendMessage(config.LOG_CHANNEL, `*${result.first_name}* _(${result.id})_,تم فك الحظر العام!\nمن قبل: _${msg.from.first_name}_\n${moment().format('MMMM Do YYYY, h:mm:ss a')}`, {parse_mode: 'Markdown'});
         });
         } else {
-            bot.sendMessage(msg.chat.id, `*${msg.from.first_name}*, You Are Not A Global Admin!`, {parse_mode: 'Markdown'});
+            bot.sendMessage(msg.chat.id, `*${msg.from.first_name}*, انت لست مشرف في البوت!`, {parse_mode: 'Markdown'});
         }
     });
 });
