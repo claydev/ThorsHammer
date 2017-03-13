@@ -27,11 +27,11 @@ bot.onText(/^[\/!#]banlist$/, msg => {
                 let fixed = arr.join('\n');
                 fs.writeFile('banlist.txt', fixed, (err) => {
                     if (err) throw err;
-                    bot.sendDocument(config.LOG_CHANNEL, `banlist.txt`, {caption: `Generated On ${moment().format('MMMM Do YYYY, h:mm:ss a')}`});
+                    bot.sendDocument(config.LOG_CHANNEL, `banlist.txt`, {caption: `انشئ في ${moment().format('MMMM Do YYYY, h:mm:ss a')}`});
                 });
             });
         } else {
-            bot.sendMessage(msg.chat.id, `*${msg.from.first_name}*, You Are Not A Global Admin!`, {parse_mode: 'Markdown'});
+            bot.sendMessage(msg.chat.id, `*${msg.from.first_name}*,انت لست مشرف عام في البوت!`, {parse_mode: 'Markdown'});
         }
     });
 });
@@ -50,6 +50,6 @@ bot.onText(/^[\/!#]globaladmins$/, msg => {
             arr.push(result.userid);
             });
     let fixed = arr.join('\n');
-        bot.sendMessage(msg.chat.id, `*Global Admins*\n\n${fixed}`, {parse_mode: 'Markdown'});
+        bot.sendMessage(msg.chat.id, `*مشرف عام*\n\n${fixed}`, {parse_mode: 'Markdown'});
     });
 });
